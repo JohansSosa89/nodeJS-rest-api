@@ -16,7 +16,7 @@ const dbConnection = async() => {
     }
     catch(error)
     {
-        throw new Error('Error a la hora de iniciar la base de datos', error);
+        throw new Error('Error a la hora de iniciar la base de datos: ' +  process.env.MONGODB_CNN);
     }
 }
 
