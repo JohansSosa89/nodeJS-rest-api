@@ -42,7 +42,7 @@ const usuariosPut = async(req, res = response) => {
     const { id } = req.params;
     const { _id, password, google, ...resto } = req.body;
 
-    //TODO validar contra base de datos
+    //validar contra base de datos
     if(password){
         const salt = bcryptjs.genSaltSync();
         resto.password = bcryptjs.hashSync(password, salt);
@@ -70,7 +70,7 @@ const usuariosDelete = async(req, res = response) => {
     const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
 
     res.json({usuario});
-}
+};
 
 module.exports = {
     usuariosGet,
@@ -78,4 +78,4 @@ module.exports = {
     usuariosPut,
     usuariosPatch,
     usuariosDelete
-}
+};
