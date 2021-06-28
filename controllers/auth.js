@@ -22,13 +22,12 @@ const login = async(req, res = response) => {
             });
         }
 
-        // Si el usuario esta activo 
+        // Si el usuario no esta activo 
         if(!usuario.estado){
             return res.status(400).json({
                 msg: `El usuario: ${correo} no se encuentra activo`
             });
         }
-
 
         // Verificar la contraseña
         const validPassword = bcryptjs.compareSync( password, usuario.password );
