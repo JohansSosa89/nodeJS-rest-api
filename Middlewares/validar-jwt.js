@@ -3,13 +3,13 @@ const jwt = require('jsonwebtoken');
 const Usuario = require('../models/usuario');
 
 
-const validarJWT = async(req = request, res = response, next) => {
+const validarJWT = async(req = request, res = response, next = any) => {
 
     const token = req.header('x-token');
 
     if(!token){
         return res.status(401).json({
-            msg: 'Autorización no valida'
+            msg: 'Autorización no valida - no hay token '
         });
     }
 
@@ -40,10 +40,10 @@ const validarJWT = async(req = request, res = response, next) => {
         console.log(error);
         res.status(401).json({
             msg: 'Token no válido'
-        })
+        });
     }
 };
 
 module.exports = {
     validarJWT
-}
+};
